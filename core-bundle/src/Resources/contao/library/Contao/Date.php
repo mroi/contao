@@ -638,7 +638,7 @@ class Date
 
 		foreach ($chunks as $chunk)
 		{
-			list($index, $flag) = explode('::', $chunk);
+			list($index, $flag) = array_pad(explode('::', $chunk), 2, null);
 
 			switch ($flag)
 			{

@@ -55,7 +55,7 @@ class Search
 		$arrSet['url'] = $arrData['url'];
 		$arrSet['title'] = $arrData['title'];
 		$arrSet['protected'] = $arrData['protected'];
-		$arrSet['filesize'] = $arrData['filesize'];
+		$arrSet['filesize'] = $arrData['filesize'] ?? null;
 		$arrSet['groups'] = $arrData['groups'];
 		$arrSet['pid'] = $arrData['pid'];
 		$arrSet['language'] = $arrData['language'];
@@ -158,6 +158,10 @@ class Search
 		if (preg_match('/<meta[^>]+name="keywords"[^>]+content="([^"]*)"[^>]*>/i', $strHead, $tags))
 		{
 			$arrData['keywords'] = trim(preg_replace('/ +/', ' ', StringUtil::decodeEntities($tags[1])));
+		}
+		else
+		{
+			$arrData['keywords'] = '';
 		}
 
 		// Read the title and alt attributes
