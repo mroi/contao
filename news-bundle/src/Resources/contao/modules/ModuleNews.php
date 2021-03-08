@@ -148,12 +148,12 @@ abstract class ModuleNews extends Module
 		$arrMeta = $this->getMetaFields($objArticle);
 
 		// Add the meta information
-		$objTemplate->date = $arrMeta['date'] ?? null;
+		$objTemplate->date = $arrMeta['date'];
 		$objTemplate->hasMetaFields = !empty($arrMeta);
 		$objTemplate->numberOfComments = $arrMeta['ccount'] ?? null;
 		$objTemplate->commentCount = $arrMeta['comments'] ?? null;
 		$objTemplate->timestamp = $objArticle->date;
-		$objTemplate->author = $arrMeta['author'] ?? null;
+		$objTemplate->author = $arrMeta['author'];
 		$objTemplate->datetime = date('Y-m-d\TH:i:sP', $objArticle->date);
 		$objTemplate->addImage = false;
 		$objTemplate->addBefore = false;
@@ -280,15 +280,15 @@ abstract class ModuleNews extends Module
 	{
 		$meta = StringUtil::deserialize($this->news_metaFields);
 
+		$return = array('date' => '', 'author' => '');
+
 		if (!\is_array($meta))
 		{
-			return array();
+			return $return;
 		}
 
 		/** @var PageModel $objPage */
 		global $objPage;
-
-		$return = array();
 
 		foreach ($meta as $field)
 		{
