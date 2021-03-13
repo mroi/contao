@@ -170,7 +170,7 @@ class InsertTags extends Controller
 
 				// Accessibility tags
 				case 'lang':
-					if (!($elements[1] ?? null))
+					if (empty($elements[1]))
 					{
 						$arrCache[$strTag] = '</span>';
 					}
