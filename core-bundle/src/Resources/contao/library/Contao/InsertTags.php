@@ -742,7 +742,7 @@ class InsertTags extends Controller
 				case 'ua':
 					$ua = Environment::get('agent');
 
-					if ($elements[1] ?? null)
+					if (!empty($elements[1]))
 					{
 						$arrCache[$strTag] = $ua->{$elements[1]};
 					}
