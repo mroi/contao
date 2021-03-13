@@ -189,7 +189,7 @@ class InsertTags extends Controller
 				case 'email':
 				case 'email_open':
 				case 'email_url':
-					if (!($elements[1] ?? null))
+					if (empty($elements[1]))
 					{
 						$arrCache[$strTag] = '';
 						break;
