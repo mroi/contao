@@ -638,13 +638,7 @@ class Date
 
 		foreach ($chunks as $chunk)
 		{
-			if (strpos($chunk, '::') === false)
-			{
-				$strReturn .= $chunk;
-				continue;
-			}
-
-			list($index, $flag) = explode('::', $chunk);
+			list($index, $flag) = explode('::', $chunk) + array(null, null);
 
 			switch ($flag)
 			{
